@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok Video Downloader - Bebas Watermark</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-cyan-400 to-pink-500 flex items-center justify-center font-bold text-white shadow-lg">
+          <i class="fa-brands fa-tiktok"></i>
+        </div>
+        <span class="font-bold text-lg tracking-wide">TikClean<span class="text-cyan-400">Pro</span></span>
+      </div>
+      <span class="text-xs text-slate-400 bg-slate-800 px-3 py-1 rounded-full border border-slate-700">HD No-Watermark</span>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 py-12 w-full">
+    <div class="text-center space-y-3 mb-10">
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+        Unduh Video TikTok Tanpa Watermark
+      </h1>
+      <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
+        Tempel tautan video TikTok untuk mengambil video beresolusi tinggi tanpa watermark secara cepat dan gratis.
+      </p>
+    </div>
+
+    <div class="bg-slate-800/80 p-3 sm:p-4 rounded-2xl border border-slate-700 shadow-xl max-w-2xl mx-auto mb-10">
+      <form id="downloadForm" class="flex flex-col sm:flex-row gap-3">
+        <div class="relative flex-1">
+          <i class="fa-solid fa-link absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"></i>
+          <input
+            type="url"
+            id="urlInput"
+            required
+            placeholder="https://www.tiktok.com/@user/video/..."
+            class="w-full pl-11 pr-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition"
+          />
+        </div>
+        <button
+          type="submit"
+          id="submitBtn"
+          class="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 font-semibold text-slate-950 rounded-xl transition flex items-center justify-center space-x-2 shadow-lg shadow-cyan-500/20 active:scale-95"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>Proses</span>
+        </button>
+      </form>
+    </div>
+
+    <div id="statusMessage" class="hidden max-w-2xl mx-auto mb-6 p-4 rounded-xl text-sm"></div>
+
+    <div id="resultCard" class="hidden bg-slate-800/90 border border-slate-700 rounded-2xl overflow-hidden shadow-2xl max-w-2xl mx-auto">
+      <div class="p-6 flex flex-col md:flex-row gap-6 items-center">
+        <div class="w-full md:w-56 h-80 rounded-xl overflow-hidden bg-black flex-shrink-0 relative group shadow-md">
+          <video id="videoPlayer" controls class="w-full h-full object-cover rounded-xl"></video>
+        </div>
+        <div class="flex-1 flex flex-col justify-between w-full space-y-4">
+          <div class="space-y-2">
+            <div class="flex items-center space-x-3">
+              <img id="authorAvatar" src="" alt="Author Avatar" class="w-10 h-10 rounded-full border border-slate-600 object-cover" />
+              <div>
+                <h3 id="authorName" class="font-semibold text-sm leading-tight text-white"></h3>
+                <p id="authorUsername" class="text-xs text-slate-400"></p>
+              </div>
+            </div>
+            <p id="videoTitle" class="text-sm text-slate-300 line-clamp-3"></p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 py-3 border-y border-slate-700/60 text-center text-xs text-slate-400">
+            <div>
+              <p class="font-bold text-white text-sm" id="statLikes">0</p>
+              <span>Suka</span>
+            </div>
+            <div>
+              <p class="font-bold text-white text-sm" id="statComments">0</p>
+              <span>Komentar</span>
+            </div>
+            <div>
+              <p class="font-bold text-white text-sm" id="statShares">0</p>
+              <span>Bagikan</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <a
+              id="btnDownloadNoWm"
+              href="#"
+              class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-xl text-center transition flex items-center justify-center space-x-2 shadow-lg shadow-emerald-500/20"
+            >
+              <i class="fa-solid fa-download"></i>
+              <span>Unduh Video (Tanpa Watermark)</span>
+            </a>
+            <a
+              id="btnDownloadMusic"
+              href="#"
+              target="_blank"
+              class="w-full py-2.5 bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium rounded-xl text-center text-sm transition flex items-center justify-center space-x-2"
+            >
+              <i class="fa-solid fa-music"></i>
+              <span>Unduh Musik (MP3)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+    <p>TikCleanPro &copy; 2025. Hanya diperuntukkan bagi penggunaan personal yang sah dan mematuhi etika konten.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
